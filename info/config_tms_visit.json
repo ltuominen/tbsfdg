@@ -1,0 +1,36 @@
+{
+    "descriptions": [
+        {
+            "dataType": "anat",
+            "modalityLabel": "T1w",
+            "criteria": {
+                "SeriesDescription": "*RMS",
+                "ImageType": ["ORIGINAL", "PRIMARY", "OTHER", "ND", "NORM", "MEAN"]
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels": "task-rest",
+            "criteria": {
+                "SeriesDescription": "Head_fMRI_rsfMRI_run1"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels": "task-rest",
+            "criteria": {
+                "SeriesDescription": "Head_fMRI_rsfMRI_run2"
+            }
+        },
+        {
+            "dataType": "func",
+            "modalityLabel": "bold",
+            "customLabels": "task-rest",
+            "criteria": {
+                "SeriesDescription": "Head_fMRI_rsfMRI_run3"
+            }
+        }
+    ]
+}

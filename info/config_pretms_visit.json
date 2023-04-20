@@ -1,0 +1,46 @@
+{
+    "descriptions": [
+        {
+            "dataType": "anat",
+            "modalityLabel": "T1w",
+            "criteria": {
+                "SeriesDescription": "*RMS",
+                "ImageType": ["ORIGINAL", "PRIMARY", "OTHER", "ND", "NORM", "MEAN"]
+            }
+        },
+        {
+            "dataType": "dwi",
+            "modalityLabel": "dwi",
+            "criteria": {
+                "SeriesDescription": "ep2d_diff_64dir_AP"
+            }
+        },
+        {
+            "dataType": "fmap",
+            "modalityLabel": "fmap",
+            "criteria": {
+                "SeriesDescription": "gre_field_mapping",
+                "ImageType": ["ORIGINAL", "PRIMARY", "M", "ND"],
+                "EchoNumber": 1
+            }
+        },
+        {
+            "dataType": "fmap",
+            "modalityLabel": "fmap",
+            "criteria": {
+                "SeriesDescription": "gre_field_mapping",
+                "ImageType": ["ORIGINAL", "PRIMARY", "M", "ND"],
+                "EchoNumber": 2
+            }
+        },
+        {
+            "dataType": "fmap",
+            "modalityLabel": "fmap",
+            "criteria": {
+                "SeriesDescription": "gre_field_mapping",
+                "ImageType": ["ORIGINAL", "PRIMARY", "P", "ND", "PHASE"],
+                "EchoNumber": 2
+            }
+        }
+    ]
+}
