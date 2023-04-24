@@ -23,13 +23,13 @@ for f in ${folders[@]}; do
   esac
 
   # run dcm2bids
-  dcm2bids -d ../dcm/$f -p tbsfdg$sub -s $ses -c ../info/${configfile} -o ../rawdata &
+  dcm2bids -d ../dcm/$f -p tbsfdg$sub -s $ses -c ../info/${configfile} -o ../rawdata --forceDcm2niix
 
   # manage resources, run 4 jobs simultaneously
-  (( np++ ))
-  if [ $np == $maxjobs ]; then
-	 wait
-	 np=0
-  fi
+  #(( np++ ))
+  #if [ $np == $maxjobs ]; then
+  #	 wait
+  #	 np=0
+  #fi
 
 done
