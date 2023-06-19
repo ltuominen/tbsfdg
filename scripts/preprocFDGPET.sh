@@ -132,11 +132,11 @@ run_all() {
     pet003=/group/tuominen/TBS-FDG/rawdata/sub-${subject}/ses-003/pet/sub-${subject}-ses-003_pet.nii.gz
     mri002=sub-${subject}_ses-002
     mri003=sub-${subject}_ses-003
-    derivates=/group/tuominen/TBS-FDG/derivatives
+    iter5=/group/tuominen/TBS-FDG/derivatives/iter5
     iter=iter5
 
-    preproc $pet002 $mri002 $derivates $iter5 &
-    preproc $pet003 $mri003 $derivates $iter5
+    preproc $pet002 $mri002 $iter5 &
+    preproc $pet003 $mri003 $iter5
 
   done < $list_of_subjects
 
