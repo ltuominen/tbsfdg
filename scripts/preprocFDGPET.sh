@@ -32,19 +32,20 @@ make_mask() {
 preproc() {
   input=$1 # path to raw pet scan (pet.nii)
   subject=$2 # subject name as in SUBJECTS_DIR
-  iter=$3 # path to iter folder in the derivates folder
+  session=$3 # sesssion nro
+  iter=$4 # path to iter folder in the derivates folder
 
   # get session name etc
   pet=$( basename $input )
-  spl_pet=(${pet//_/ })
-  pn=(${spl_pet[0]//-/ })
+  spl_pet=(${pet//-/ })
+  subject_name=${spl_pet[1]}
 
   # create folders if missing
   if [ ! -d  ${derivates}/${iter} ]; then mkdir ${derivates}/${iter}; fi
-  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}${pn[2]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}${pn[2]}; fi
-  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}${pn[2]}/ses-${pn[4]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}${pn[2]}/ses-${pn[4]}; fi
+  if [ ! -d ${derivates}/${iter}/sub-${subject_name} ]; then mkdir ${derivates}/${iter}/sub-${subject_name} ; fi
+  if [ ! -d ${derivates}/${iter}/sub-${subject_name}/ses-${session} ]; then mkdir ${derivates}/${iter}/sub-${subject_name}/ses-${session}; fi
 
-  pdir=${derivates}/${iter}/sub-${pn[1]}${pn[2]}/ses-${pn[4]}/pet
+  pdir=${derivates}/${iter}/sub-${subject_name}/ses-${session}/pet
 
   # create PET directory in the derivates and make a copy of the raw pet.nii.gz
   mkdir $pdir
@@ -94,7 +95,7 @@ preproc() {
   R=$( cat ${pdir}/wmgm_mean_activity )
 
   # capture ref values
-  echo ${subject} ses-${pn[4]} $R >> wmgm_mean_activity_values.txt
+  echo ${subject_name} ses-${session} $R >> wmgm_mean_activity_values.txt
 
   # dived the image by the average value
   fslmaths $pdir/rs_sum_mc_${pet} -div $R ${pdir}/SUVR.nii.gz
@@ -118,7 +119,7 @@ preproc() {
   fslmaths $pdir/SUVR.mni152.2mm.sm00.nii.gz -s 8 $pdir/SUVR.mni152.2mm.sm08.nii.gz # out = SUVR1.mni152.2mm.sm05.nii.gz
 
   # catch error status
-  echo ${subject} ses-${pn[4]} $? >> error.log
+  echo ${subject_name} ses-${session} $? >> error.log
 
 }
 
@@ -132,8 +133,8 @@ run_all() {
     mri003=sub-${subject}_ses-003
     iter6=/group/tuominen/TBS-FDG/derivatives/iter6
 
-    preproc $pet002 $mri002 $iter6 &
-    preproc $pet003 $mri003 $iter6
+    preproc $pet002 $mri002 002 $iter6 &
+    preproc $pet003 $mri003 003 $iter6
 
   done < $list_of_subjects
 
