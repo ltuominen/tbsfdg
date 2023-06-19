@@ -41,10 +41,10 @@ preproc() {
 
   # create folders if missing
   if [ ! -d  ${derivates}/${iter} ]; then mkdir ${derivates}/${iter}; fi
-  if [ ! -d ${derivates}/${iter}/sub-${pn[1]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}; fi
-  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}/ses-${pn[3]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}/ses-${pn[3]}; fi
+  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}-${pn[2]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}-${pn[2]}; fi
+  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}-${pn[2]}/ses-${pn[4]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}-${pn[2]}/ses-${pn[4]}; fi
 
-  pdir=${derivates}/${iter}/sub-${pn[1]}/ses-${pn[3]}/pet
+  pdir=${derivates}/${iter}/sub-${pn[1]}-${pn[2]}/ses-${pn[4]}/pet
 
   # create PET directory in the derivates and make a copy of the raw pet.nii
   mkdir $pdir
@@ -94,7 +94,7 @@ preproc() {
   R=$( cat ${pdir}/wmgm_mean_activity )
 
   # capture ref values
-  echo ${subject} ses-${pn[3]} $R >> wmgm_mean_activity_values.txt
+  echo ${subject} ses-${pn[4]} $R >> wmgm_mean_activity_values.txt
 
   # dived the image by the average value
   fslmaths $pdir/rs_sum_mc_${pet}.gz -div $R ${pdir}/SUVR.nii.gz
@@ -118,7 +118,7 @@ preproc() {
   fslmaths $pdir/SUVR.mni152.2mm.sm00.nii.gz -s 8 $pdir/SUVR.mni152.2mm.sm08.nii.gz # out = SUVR1.mni152.2mm.sm05.nii.gz
 
   # catch error status
-  echo ${subject} ses-${pn[3]} $? >> error.log
+  echo ${subject} ses-${pn[4]} $? >> error.log
 
 }
 
@@ -131,7 +131,6 @@ run_all() {
     mri002=sub-${subject}_ses-002
     mri003=sub-${subject}_ses-003
     iter5=/group/tuominen/TBS-FDG/derivatives/iter5
-    iter=iter5
 
     preproc $pet002 $mri002 $iter5 &
     preproc $pet003 $mri003 $iter5
