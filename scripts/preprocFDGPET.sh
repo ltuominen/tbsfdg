@@ -125,9 +125,7 @@ preproc() {
 run_all() {
   list_of_subjects=$1
 
-  while read line; do
-    array=( $line );
-    subject=${array[0]}
+  while read subject; do
     pet002=/group/tuominen/TBS-FDG/rawdata/sub-${subject}/ses-002/pet/sub-${subject}-ses-002_pet.nii.gz
     pet003=/group/tuominen/TBS-FDG/rawdata/sub-${subject}/ses-003/pet/sub-${subject}-ses-003_pet.nii.gz
     mri002=sub-${subject}_ses-002
