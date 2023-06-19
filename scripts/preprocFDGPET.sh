@@ -129,8 +129,8 @@ run_all() {
   while read subject; do
     pet002=/group/tuominen/TBS-FDG/rawdata/sub-${subject}/ses-002/pet/sub-${subject}-ses-002_pet.nii.gz
     pet003=/group/tuominen/TBS-FDG/rawdata/sub-${subject}/ses-003/pet/sub-${subject}-ses-003_pet.nii.gz
-    mri002=sub-${subject}_ses-002
-    mri003=sub-${subject}_ses-003
+    mri002=${subject}_ses-002
+    mri003=${subject}_ses-003
     iter6=/group/tuominen/TBS-FDG/derivatives/iter6
 
     preproc $pet002 $mri002 002 $iter6 &
