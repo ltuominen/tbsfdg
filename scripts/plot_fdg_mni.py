@@ -1,4 +1,3 @@
-#! /Users/laurituominen/anaconda3/bin/python
 from nilearn import plotting
 import os
 import sys
