@@ -41,12 +41,12 @@ preproc() {
 
   # create folders if missing
   if [ ! -d  ${derivates}/${iter} ]; then mkdir ${derivates}/${iter}; fi
-  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}-${pn[2]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}-${pn[2]}; fi
-  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}-${pn[2]}/ses-${pn[4]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}-${pn[2]}/ses-${pn[4]}; fi
+  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}${pn[2]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}${pn[2]}; fi
+  if [ ! -d ${derivates}/${iter}/sub-${pn[1]}${pn[2]}/ses-${pn[4]} ]; then mkdir ${derivates}/${iter}/sub-${pn[1]}${pn[2]}/ses-${pn[4]}; fi
 
-  pdir=${derivates}/${iter}/sub-${pn[1]}-${pn[2]}/ses-${pn[4]}/pet
+  pdir=${derivates}/${iter}/sub-${pn[1]}${pn[2]}/ses-${pn[4]}/pet
 
-  # create PET directory in the derivates and make a copy of the raw pet.nii
+  # create PET directory in the derivates and make a copy of the raw pet.nii.gz
   mkdir $pdir
   cp $input $pdir
 
@@ -62,27 +62,27 @@ preproc() {
   ----------------------------------------------------------------------------------------------------------------"
 
   # sum
-  mri_concat $pdir/mc_${pet}.gz --sum --o $pdir/sum_mc_${pet}.gz # out = sum_mc_p1.nii.gz
+  mri_concat $pdir/mc_${pet} --sum --o $pdir/sum_mc_${pet} # out = sum_mc_p1.nii.gz
 
   echo "----------------------------------------------------------------------------------------------------------------
-  Reslicing $pdir/sum_mc_${pet}.gz.
+  Reslicing $pdir/sum_mc_${pet}.
   ----------------------------------------------------------------------------------------------------------------"
 
   # reslice
-  mri_convert $pdir/sum_mc_${pet}.gz -vs 2 2 2 $pdir/rs_sum_mc_${pet}.gz --force_ras_good # out = rs_sum_mc_p1.nii.gz
+  mri_convert $pdir/sum_mc_${pet} -vs 2 2 2 $pdir/rs_sum_mc_${pet} --force_ras_good # out = rs_sum_mc_p1.nii.gz
 
   echo "----------------------------------------------------------------------------------------------------------------
-  Coregistering $pdir/rs_sum_mc_${pet}.gz to ${subject}.
+  Coregistering $pdir/rs_sum_mc_${pet} to ${subject}.
   ----------------------------------------------------------------------------------------------------------------"
 
   # coregister to T1
-  mri_coreg --s ${subject} --targ $SUBJECTS_DIR/${subject}/mri/brain.mgz --no-ref-mask --mov $pdir/rs_sum_mc_${pet}.gz --reg $pdir/p2mri1.reg.lta --dof 9 --threads 3 # out = p2mri1.reg.lta
+  mri_coreg --s ${subject} --targ $SUBJECTS_DIR/${subject}/mri/brain.mgz --no-ref-mask --mov $pdir/rs_sum_mc_${pet} --reg $pdir/p2mri1.reg.lta --dof 9 --threads 3 # out = p2mri1.reg.lta
 
   # move to T1
-  mri_vol2vol --reg $pdir/p2mri1.reg.lta --mov $pdir/rs_sum_mc_${pet}.gz --fstarg --o $pdir/in-anat-${pet}.gz  # out = in-anat-p.nii.gz
+  mri_vol2vol --reg $pdir/p2mri1.reg.lta --mov $pdir/rs_sum_mc_${pet} --fstarg --o $pdir/in-anat-${pet}  # out = in-anat-p.nii.gz
 
   echo "----------------------------------------------------------------------------------------------------------------
-  Calculating SUVR from $pdir/rs_sum_mc_${pet}.gz.
+  Calculating SUVR from $pdir/rs_sum_mc_${pet}.
   ----------------------------------------------------------------------------------------------------------------"
 
   # make whitematter + graymatter mask
@@ -90,15 +90,15 @@ preproc() {
   mask=${SUBJECTS_DIR}/${subject}/mri/wmgm_mask.nii.gz
 
   # extract average value within the mask from the image
-  fslstats $pdir/in-anat-${pet}.gz -k $mask -M > ${pdir}/wmgm_mean_activity
+  fslstats $pdir/in-anat-${pet} -k $mask -M > ${pdir}/wmgm_mean_activity
   R=$( cat ${pdir}/wmgm_mean_activity )
 
   # capture ref values
   echo ${subject} ses-${pn[4]} $R >> wmgm_mean_activity_values.txt
 
   # dived the image by the average value
-  fslmaths $pdir/rs_sum_mc_${pet}.gz -div $R ${pdir}/SUVR.nii.gz
-  fslmaths $pdir/in-anat-${pet}.gz -div $R ${pdir}/SUVR.in.anat.nii.gz
+  fslmaths $pdir/rs_sum_mc_${pet} -div $R ${pdir}/SUVR.nii.gz
+  fslmaths $pdir/in-anat-${pet} -div $R ${pdir}/SUVR.in.anat.nii.gz
 
   echo "----------------------------------------------------------------------------------------------------------------
   Registering ${subject} to MNI152
@@ -130,10 +130,10 @@ run_all() {
     pet003=/group/tuominen/TBS-FDG/rawdata/sub-${subject}/ses-003/pet/sub-${subject}-ses-003_pet.nii.gz
     mri002=sub-${subject}_ses-002
     mri003=sub-${subject}_ses-003
-    iter5=/group/tuominen/TBS-FDG/derivatives/iter5
+    iter6=/group/tuominen/TBS-FDG/derivatives/iter6
 
-    preproc $pet002 $mri002 $iter5 &
-    preproc $pet003 $mri003 $iter5
+    preproc $pet002 $mri002 $iter6 &
+    preproc $pet003 $mri003 $iter6
 
   done < $list_of_subjects
 
