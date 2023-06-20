@@ -1,0 +1,21 @@
+
+7.2.0
+cwd /Users/laurituominen/Documents/Research/FDGPET/petanalysis/tbsfdg/scripts
+cmdline mri_glmfit --y ../group_pet/Y.nii.gz --osgm --glmdir ../group_pet/active_vs_sham --nii.gz --save-eres 
+sysname  Darwin
+hostname Lauris-MacBook-Pro.local
+machine  x86_64
+user     laurituominen
+FixVertexAreaFlag = 1
+UseMaskWithSmoothing     1
+OneSampleGroupMean 1
+y    /Users/laurituominen/Documents/Research/FDGPET/petanalysis/tbsfdg/group_pet/Y.nii.gz
+logyflag 0
+usedti  0
+glmdir ../group_pet/active_vs_sham
+IllCondOK 0
+ReScaleX 1
+DoFFx 0
+ResidualFWHM 27.210246
+SearchSpace 7220912.000000
+anattype volume
