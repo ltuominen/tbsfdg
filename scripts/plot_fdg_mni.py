@@ -13,7 +13,7 @@ mni152=fsl_dir + '/data/standard/MNI152_T1_2mm_brain.nii.gz'
 
 for subject in subjects:
     for ses in ['ses-002', 'ses-003']:
-        petfile=os.path.join(derivates, subject, ses, 'pet/SUVR.mni152.2mm.sm00.nii.gz')
+        petfile=os.path.join(derivates, ('sub-' + subject), ses, 'pet/SUVR.mni152.2mm.sm00.nii.gz')
         output_file=os.path.join(output_dir, (subject + '_' + ses + '.png' ))
 
         if os.path.exists(petfile):
