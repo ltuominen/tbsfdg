@@ -1,7 +1,6 @@
 subject sham_session active_session
 tbsfdg001 002 003
 tbsfdg002 003 002
-tbsfdg003 002 003
 tbsfdg004 003 002
 tbsfdg005 003 002
 tbsfdg006 003 002
