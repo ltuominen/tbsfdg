@@ -16,7 +16,7 @@ for subject in subjects:
   for ses in ['002', '003' ]:
       fd_metrics=derivates + 'sub-' + subject + '/ses-' + ses + '/pet/fd_motion.metrics'
       numbers = np.loadtxt(fd_metrics)
-      motion_data[(subject + '-' + ses)] = numbers
+      data[(subject + '-' + ses)] = numbers
 
 df=pd.DataFrame(data)
 
