@@ -6,7 +6,7 @@ import numpy as np
 subjects=list(np.genfromtxt(sys.argv[1],dtype='str'))
 
 derivates='/group/tuominen/TBS-FDG/derivatives/iter6/'
-output_dir='/group/tuominen/TBS-FDG/tbsfdg/qc_images/'
+output_dir='/group/tuominen/TBS-FDG/tbsfdg/qc/'
 
 fsl_dir=os.environ['FSL_DIR']
 mni152=fsl_dir + '/data/standard/MNI152_T1_2mm_brain.nii.gz'
