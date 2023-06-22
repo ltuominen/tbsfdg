@@ -7,7 +7,7 @@ This is a repository for code for a project comparing the effects of active iTBS
 
 ### info
 
-contains scan info & order of the scans (unmask.txt)
+contains various scan info & [order of the scans](info/unmask.txt)
 
 ### scripts_preprocess
 
@@ -24,8 +24,17 @@ scripts to plot:
 
 ### qc
 
+contains individual scans & contrast images in MNI152
+
 ### contrasts
+
++ active vs sham contrast [$^18$F]FDG-PET nifti files for each subject
++ percetage differences ((active-sham)/sham)*100 for each subject
 
 ### group
 
 [osgm](group/active_vs_sham/osgm/) contains output files from the glm
+
+### results
+
+currently empty
