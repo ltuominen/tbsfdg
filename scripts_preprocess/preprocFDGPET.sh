@@ -15,7 +15,7 @@ make_mask() {
 
   add=(4 5 14 15 43 44 72 73)
   for r in ${add[@]};do
-    fslmaths $target -thr $r -uthr $r -bin ${temp}/${r}.nii.gz
+    fslmaths ${temp}/aparc+aseg.nii.gz -thr $r -uthr $r -bin ${temp}/${r}.nii.gz
     fslmaths ${temp}/CSF_mask.nii.gz -add ${temp}/${r}.nii.gz -bin ${temp}/CSF_mask.nii.gz
   done
 
@@ -30,26 +30,29 @@ make_mask() {
 }
 
 preproc() {
-  input=$1 # path to raw pet scan (pet.nii)
-  subject=$2 # subject name as in SUBJECTS_DIR
-  session=$3 # sesssion nro
-  iter=$4 # path to iter folder in the derivates folder
 
+  subject=$1 # path to raw pet scan (pet.nii)
+  rawdata=$2 # path to derivatives
+  derivatives=$3
+  session=$4 # session nro
+  iter=$5 # path to iter folder in the derivatives folder
+  
+  export SUBJECTS_DIR=$6
+  
   # get session name etc
-  pet=$( basename $input )
-  spl_pet=(${pet//-/ })
-  subject_name=${spl_pet[1]}
-
+  pet=${subject}-${session}_pet.nii.gz
+  rawpet=${rawdata}/${subject}/${session}/pet/${pet}
+  
   # create folders if missing
-  if [ ! -d  ${derivates}/${iter} ]; then mkdir ${derivates}/${iter}; fi
-  if [ ! -d ${derivates}/${iter}/sub-${subject_name} ]; then mkdir ${derivates}/${iter}/sub-${subject_name} ; fi
-  if [ ! -d ${derivates}/${iter}/sub-${subject_name}/ses-${session} ]; then mkdir ${derivates}/${iter}/sub-${subject_name}/ses-${session}; fi
+  if [ ! -d  ${derivatives}/${iter} ]; then mkdir ${derivatives}/${iter}; fi
+  if [ ! -d ${derivatives}/${iter}/${subject} ]; then mkdir ${derivatives}/${iter}/${subject} ; fi
+  if [ ! -d ${derivatives}/${iter}/${subject}/${session} ]; then mkdir ${derivatives}/${iter}/${subject}/${session}; fi
 
-  pdir=${derivates}/${iter}/sub-${subject_name}/ses-${session}/pet
+  pdir=${derivatives}/${iter}/${subject}/${session}/pet
 
-  # create PET directory in the derivates and make a copy of the raw pet.nii.gz
+  # create PET directory in the derivatives and make a copy of the raw pet.nii.gz
   mkdir $pdir
-  cp $input $pdir
+  cp $rawpet $pdir
 
   echo "----------------------------------------------------------------------------------------------------------------
   Doing motion correction for ${pdir}/${pet}.
@@ -77,7 +80,7 @@ preproc() {
   ----------------------------------------------------------------------------------------------------------------"
 
   # coregister to T1
-  mri_coreg --s ${subject} --targ $SUBJECTS_DIR/${subject}/mri/brain.mgz --no-ref-mask --mov $pdir/rs_sum_mc_${pet} --reg $pdir/p2mri1.reg.lta --dof 9 --threads 3 # out = p2mri1.reg.lta
+  mri_coreg --s ${subject} --targ ${SUBJECTS_DIR}/${subject}/mri/brain.mgz --no-ref-mask --mov $pdir/rs_sum_mc_${pet} --reg $pdir/p2mri1.reg.lta --dof 9 --threads 3 # out = p2mri1.reg.lta
 
   # move to T1
   mri_vol2vol --reg $pdir/p2mri1.reg.lta --mov $pdir/rs_sum_mc_${pet} --fstarg --o $pdir/in-anat-${pet}  # out = in-anat-p.nii.gz
@@ -95,7 +98,7 @@ preproc() {
   R=$( cat ${pdir}/wmgm_mean_activity )
 
   # capture ref values
-  echo ${subject_name} ses-${session} $R >> wmgm_mean_activity_values.txt
+  echo ${subject} ${session} $R >> wmgm_mean_activity_values.txt
 
   # dived the image by the average value
   fslmaths $pdir/rs_sum_mc_${pet} -div $R ${pdir}/SUVR.nii.gz
@@ -106,20 +109,21 @@ preproc() {
   ----------------------------------------------------------------------------------------------------------------"
 
   # create a map to MNI152
-  mni152reg --s ${subject}
+  #mni152reg --s ${subject}
 
   echo "----------------------------------------------------------------------------------------------------------------
-  Normalizing and smoothing ${pdir}/SUVR.nii.gz.
+  Normalizing and #smoothing ${pdir}/SUVR.nii.gz.
   ----------------------------------------------------------------------------------------------------------------"
 
+	#python3 /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_preprocess/scripts/Affine_register_project_to_MNIspace.py "${subj}"
   # move SUVR to MNI152
-  mri_vol2vol --mov $pdir/SUVR.nii.gz --reg $pdir/p2mri1.reg.lta --mni152reg --talres 2 --o $pdir/SUVR.mni152.2mm.sm00.nii.gz #out = SUVR1.mni152.2mm.sm00.nii.gz
+  #mri_vol2vol --mov $pdir/SUVR.nii.gz --reg $pdir/p2mri1.reg.lta --mni152reg --talres 2 --o $pdir/SUVR.mni152.2mm.sm00.nii.gz #out = SUVR1.mni152.2mm.sm00.nii.gz
 
   # smooth SUVRs
-  fslmaths $pdir/SUVR.mni152.2mm.sm00.nii.gz -s 8 $pdir/SUVR.mni152.2mm.sm08.nii.gz # out = SUVR1.mni152.2mm.sm05.nii.gz
+  #fslmaths $pdir/SUVR.mni152.2mm.sm00.nii.gz -s 8 $pdir/SUVR.mni152.2mm.sm08.nii.gz # out = SUVR1.mni152.2mm.sm05.nii.gz
 
   # catch error status
-  echo ${subject_name} ses-${session} $? >> error.log
+  echo ${subject} ${session} $? >> error.log
 
 }
 
@@ -127,14 +131,18 @@ run_all() {
   list_of_subjects=$1
 
   while read subject; do
-    pet002=/group/tuominen/TBS-FDG/rawdata/sub-${subject}/ses-002/pet/sub-${subject}-ses-002_pet.nii.gz
-    pet003=/group/tuominen/TBS-FDG/rawdata/sub-${subject}/ses-003/pet/sub-${subject}-ses-003_pet.nii.gz
-    mri002=${subject}_ses-002
-    mri003=${subject}_ses-003
-    iter6=/group/tuominen/TBS-FDG/derivatives/iter6
-
-    preproc $pet002 $mri002 002 $iter6 &
-    preproc $pet003 $mri003 003 $iter6
+    root=/home/lauri/Documents/TMS-FDG/
+    rawdata=${root}/rawdata/
+    derivatives=${root}/derivatives/
+    SUBJECTS_DIR_ses_002=${root}/SUBJECTS_DIR_ses-002
+    SUBJECTS_DIR_ses_003=${root}/SUBJECTS_DIR_ses-003
+    #pet002=/home/lauri/Documents/TMS-FDG/rawdata/sub-${subject}/ses-002/pet/sub-${subject}-ses-002_pet.nii.gz
+    #pet003=/home/lauri/Documents/TMS-FDG/rawdata/sub-${subject}/ses-003/pet/sub-${subject}-ses-003_pet.nii.gz
+    #mri002=${subject}_ses-002
+    #mri003=${subject}_ses-003
+    
+    preproc ${subject} ${rawdata} ${derivatives} ses-002 iter6s2 $SUBJECTS_DIR_ses_002&
+    preproc ${subject} ${rawdata} ${derivatives} ses-003 iter6s3 $SUBJECTS_DIR_ses_003
 
   done < $list_of_subjects
 
