@@ -109,7 +109,7 @@ preproc() {
   ----------------------------------------------------------------------------------------------------------------"
 
   # create a map to MNI152
-  #mni152reg --s ${subject}
+  mni152reg --s ${subject}
 
   echo "----------------------------------------------------------------------------------------------------------------
   Normalizing and #smoothing ${pdir}/SUVR.nii.gz.
@@ -117,7 +117,11 @@ preproc() {
 
 	#python3 /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_preprocess/scripts/Affine_register_project_to_MNIspace.py "${subj}"
   # move SUVR to MNI152
-  #mri_vol2vol --mov $pdir/SUVR.nii.gz --reg $pdir/p2mri1.reg.lta --mni152reg --talres 2 --o $pdir/SUVR.mni152.2mm.sm00.nii.gz #out = SUVR1.mni152.2mm.sm00.nii.gz
+  mri_vol2vol --mov $pdir/SUVR.nii.gz --reg $pdir/p2mri1.reg.lta --mni152reg --talres 2 --o $pdir/SUVR.mni152.2mm.sm00.nii.gz #out = SUVR1.mni152.2mm.sm00.nii.gz
+  
+  # move to surface 
+  mri_vol2surf --mov ${pdir}/SUVR.nii.gz --reg $pdir/p2mri1.reg.lta --hemi lh --projfrac 0.5 --o ${pdir}/lh.SUVR.fsaverage.sm00.nii.gz --cortex --trgsubject fsaverage
+  mri_vol2surf --mov ${pdir}/SUVR.nii.gz --reg $pdir/p2mri1.reg.lta --hemi rh --projfrac 0.5 --o ${pdir}/rh.SUVR.fsaverage.sm00.nii.gz --cortex --trgsubject fsaverage
 
   # smooth SUVRs
   #fslmaths $pdir/SUVR.mni152.2mm.sm00.nii.gz -s 8 $pdir/SUVR.mni152.2mm.sm08.nii.gz # out = SUVR1.mni152.2mm.sm05.nii.gz
@@ -131,6 +135,7 @@ run_all() {
   list_of_subjects=$1
 
   while read subject; do
+    subject=sub-${subject}
     root=/home/lauri/Documents/TMS-FDG/
     rawdata=${root}/rawdata/
     derivatives=${root}/derivatives/
