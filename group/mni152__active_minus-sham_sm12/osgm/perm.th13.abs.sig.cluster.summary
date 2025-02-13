@@ -1,0 +1,38 @@
+# Cluster Growing Summary (mri_volcluster)
+# 7.4.1
+# cwd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+# cmdline mri_volcluster --in /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/sig.nii.gz --mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//mask.nii.gz --no-fixmni --cwsig /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/perm.th13.abs.sig.cluster.nii.gz --sum /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/perm.th13.abs.sig.cluster.summary --ocn /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/perm.th13.abs.sig.ocn.nii.gz --cwpvalthresh 0.05 --out /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/perm.th13.abs.sig.masked.nii.gz --allowdiag --maxcwpval /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/perm.th13.abs.max.cwpval.txt --seg fsaverage aparc+aseg.mgz --reg /usr/local/freesurfer/subjects/fsaverage/mri.2mm/reg.2mm.dat --csdpdf /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/perm.th13.abs.pdf.dat --csd /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//csd/perm.th13.abs.j001-osgm.csd --vwsig /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/perm.th13.abs.sig.voxel.nii.gz --vwsigmax /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/perm.th13.abs.sig.voxel.max.dat 
+# SUBJECTS_DIR  /usr/local/freesurfer/subjects
+# sysname  Linux
+# hostname XPS
+# machine  x86_64
+# user     lauri
+# Input Volume:      /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//osgm/sig.nii.gz
+# Frame Number:      0
+# VoxSize_mm3 8
+# SearchSpace_mm3 1.36875e+06
+# SearchSpace_vox 171094
+# Minimum Threshold: 1.3
+# Bonferroni 0
+# Maximum Threshold: inifinity
+# Threshold Sign:    abs
+# AdjustThreshWhenOneTail 1
+# CW PValue Threshold: 0.05 
+# Size Threshold:    0 mm^3
+# Size Threshold:    0 voxels
+# Voxel Size:        8 mm^3
+# Registration:      /usr/local/freesurfer/subjects/fsaverage/mri.2mm/reg.2mm.dat
+# Mask Vol:          /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12//mask.nii.gz
+# Mask Thresh:       0.500000
+# Mask Sign:         abs
+# Mask Invert:       0
+# AllowDiag:         1
+# NClusters          0
+# CSD thresh  1.300000
+# CSD nreps    1000
+# CSD simtype  perm
+# CSD contrast osgm
+# CSD confint  90.000000
+# 
+# Reporting Coordinates in MNI305 Space
+# Cluster   Size(n)   Size(mm^3)     MNIX   MNIY    MNIZ              Max    CWP    CWPLow    CWPHi

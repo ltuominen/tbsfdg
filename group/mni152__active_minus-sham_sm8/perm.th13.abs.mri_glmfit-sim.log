@@ -1,0 +1,129 @@
+
+cd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+/usr/local/freesurfer/bin/mri_glmfit-sim
+--glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8/ --perm 1000 1.3 abs --cwp 0.05
+
+mri_glmfit-sim 7.4.1
+Tue 11 Feb 2025 01:28:15 PM EST
+Linux XPS 6.8.0-47-generic #47~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Oct  2 16:16:55 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+lauri
+setenv SUBJECTS_DIR /usr/local/freesurfer/subjects
+FREESURFER_HOME /usr/local/freesurfer
+
+Original mri_glmfit command line:
+cmdline mri_glmfit --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_active_minus_sham_mni152_sm8.nii.gz --save-eres --osgm --mask /home/lauri/Documents/TMS-FDG/tbsfdg/graymask.nii.gz --nii.gz --glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8/
+
+DoSim = 1
+UseCache = 0
+DoPoll = 0
+DoPBSubmit = 0
+DoBackground = 0
+DiagCluster = 0
+gd2mtx = dods
+fwhm = 0
+nSimPerJob = 1000
+1/1 Tue 11 Feb 2025 01:28:15 PM EST
+mri_glmfit --C /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//tmp.mri_glmfit-sim-614100/osgm.mtx --sim perm 1000 1.3 /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//csd/perm.th13.abs.j001 --sim-sign abs --fwhm 0 --X /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//Xg.dat --mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//mask.nii.gz --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//eres.nii.gz --perm-1 --perm-force
+simbase /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//csd/perm.th13.abs.j001
+FWHM = 0.000000
+
+7.4.1
+cwd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+cmdline mri_glmfit --C /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//tmp.mri_glmfit-sim-614100/osgm.mtx --sim perm 1000 1.3 /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//csd/perm.th13.abs.j001 --sim-sign abs --fwhm 0 --X /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//Xg.dat --mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//mask.nii.gz --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//eres.nii.gz --perm-1 --perm-force 
+sysname  Linux
+hostname XPS
+machine  x86_64
+user     lauri
+FixVertexAreaFlag = 1
+UseMaskWithSmoothing     1
+OneSampleGroupMean 0
+y    /home/lauri/Documents/TMS-FDG/tbsfdg/group/mni152__active_minus-sham_sm8/eres.nii.gz
+logyflag 0
+X    /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//Xg.dat
+usedti  0
+mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//mask.nii.gz
+maskinv 0
+glmdir (null)
+IllCondOK 0
+ReScaleX 1
+DoFFx 0
+SigUseDouble 1
+Loading y from /home/lauri/Documents/TMS-FDG/tbsfdg/group/mni152__active_minus-sham_sm8/eres.nii.gz
+   ... done reading.
+Computing normalized matrix
+Normalized matrix condition is 1
+Matrix condition is 1
+Found 171094 voxels in mask
+search space = 1368752.000000
+Design detected as one-sample group mean, adjusting permutation simulation
+DOF = 15
+thresh = 1.3, threshadj = 0.99897 
+
+
+Starting simulation sim over 1000 trials
+mri_glmfit simulation done 4.71287
+
+
+Tue 11 Feb 2025 01:32:58 PM EST
+mri_volcluster --in /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/sig.nii.gz --mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//mask.nii.gz --no-fixmni --cwsig /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.nii.gz --sum /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.summary --ocn /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.ocn.nii.gz --cwpvalthresh 0.05 --out /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.masked.nii.gz --allowdiag --maxcwpval /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.max.cwpval.txt --seg fsaverage aparc+aseg.mgz --reg /usr/local/freesurfer/subjects/fsaverage/mri.2mm/reg.2mm.dat --csdpdf /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.pdf.dat --csd /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//csd/perm.th13.abs.j001-osgm.csd --vwsig /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.voxel.nii.gz --vwsigmax /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.voxel.max.dat
+NOT Adjusting threshold for 1-tailed test
+threshmin 1.3, threshminadj 1.3
+Using defalt ctab /usr/local/freesurfer/FreeSurferColorLUT.txt
+INFO: loading mask volume: /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//mask.nii.gz
+INFO: MRIbinarize01(): nhits = 171094
+Found 171094 voxels in mask
+INFO: subject = fsaverage
+Input volume FOV xfm Matrix: ----------------
+-2.00000   0.00000   0.00000   91.00000;
+ 0.00000   0.00000   2.00000  -91.00000;
+ 0.00000  -2.00000   0.00000   109.00000;
+ 0.00000   0.00000   0.00000   1.00000;
+Search Space = 1.36875e+06 mm3
+Using ctab /usr/local/freesurfer/FreeSurferColorLUT.txt
+Computing voxel-wise significance
+CSDpvalMaxSigMap(): found 16197/171094 above 0, max=-0.110138
+INFO: Found 7467 voxels in threhold range
+INFO: Found 77 clusters that meet threshold criteria
+INFO: Found 77 clusters that meet size criteria
+INFO: Found 77 final clusters
+Pruning by CW P-Value 0.05
+INFO: writing summary to /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.summary
+Saving cluster pval /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.nii.gz
+INFO: writing OCN to /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.ocn.nii.gz
+mri_volcluster: done
+mri_segstats --seg /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.ocn.nii.gz --exclude 0 --i /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_active_minus_sham_mni152_sm8.nii.gz --sum /tmp/tmp.QxNZFk --avgwf /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.y.ocn.dat
+
+7.4.1
+cwd 
+cmdline mri_segstats --seg /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.ocn.nii.gz --exclude 0 --i /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_active_minus_sham_mni152_sm8.nii.gz --sum /tmp/tmp.QxNZFk --avgwf /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.y.ocn.dat 
+sysname  Linux
+hostname XPS
+machine  x86_64
+user     lauri
+whitesurfname  white
+UseRobust  0
+Loading /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.ocn.nii.gz
+Loading /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_active_minus_sham_mni152_sm8.nii.gz
+Voxel Volume is 8 mm^3
+Generating list of segmentation ids
+Found   1 segmentations
+Computing statistics for each segmentation
+
+Reporting on   0 segmentations
+Using PrintSegStat
+Computing spatial average of each frame
+
+Writing to /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.y.ocn.dat
+mri_segstats done
+mri_convert /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.nii.gz /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.nii.gz --frame 0
+mri_convert /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.nii.gz /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.nii.gz --frame 0 
+reading from /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.nii.gz...
+TR=1000.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, 0)
+j_ras = (0, 1, 0)
+k_ras = (0, 0, 1)
+keeping frame 0
+writing to /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8//osgm/perm.th13.abs.sig.cluster.nii.gz...
+Tue 11 Feb 2025 01:28:15 PM EST
+Tue 11 Feb 2025 01:33:00 PM EST
+mri_glmfit-sim done

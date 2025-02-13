@@ -1,0 +1,172 @@
+
+cd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+/usr/local/freesurfer/bin/mri_glmfit-sim
+--glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8 --perm 1000 1.3 abs --cwp 0.05 --3spaces
+
+mri_glmfit-sim 7.4.1
+Tue 11 Feb 2025 01:51:36 PM EST
+Linux XPS 6.8.0-47-generic #47~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Oct  2 16:16:55 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+lauri
+setenv SUBJECTS_DIR /usr/local/freesurfer/subjects
+FREESURFER_HOME /usr/local/freesurfer
+
+Original mri_glmfit command line:
+cmdline mri_glmfit --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_lh_active_minus_sham_fsaverage_sm8.nii.gz --surface fsaverage lh --save-eres --osgm --nii.gz --glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8
+
+DoSim = 1
+UseCache = 0
+DoPoll = 0
+DoPBSubmit = 0
+DoBackground = 0
+DiagCluster = 0
+gd2mtx = dods
+fwhm = 0
+nSimPerJob = 1000
+1/1 Tue 11 Feb 2025 01:51:36 PM EST
+mri_glmfit --C /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/tmp.mri_glmfit-sim-618334/osgm.mtx --sim perm 1000 1.3 /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/csd/perm.th13.abs.j001 --sim-sign abs --fwhm 0 --X /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/Xg.dat --mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/mask.nii.gz --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/eres.nii.gz --perm-1 --perm-force --surf fsaverage lh white
+simbase /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/csd/perm.th13.abs.j001
+FWHM = 0.000000
+Reading source surface /usr/local/freesurfer/subjects/fsaverage/surf/lh.white
+Number of vertices 163842
+Number of faces    327680
+Total area         65417.000000
+AvgVtxArea       0.399269
+AvgVtxDist       0.721953
+StdVtxDist       0.195472
+
+7.4.1
+cwd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+cmdline mri_glmfit --C /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/tmp.mri_glmfit-sim-618334/osgm.mtx --sim perm 1000 1.3 /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/csd/perm.th13.abs.j001 --sim-sign abs --fwhm 0 --X /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/Xg.dat --mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/mask.nii.gz --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/eres.nii.gz --perm-1 --perm-force --surf fsaverage lh white 
+sysname  Linux
+hostname XPS
+machine  x86_64
+user     lauri
+FixVertexAreaFlag = 1
+UseMaskWithSmoothing     1
+OneSampleGroupMean 0
+y    /home/lauri/Documents/TMS-FDG/tbsfdg/group/fsaverage_lh_active_minus-sham_sm8/eres.nii.gz
+logyflag 0
+X    /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/Xg.dat
+usedti  0
+mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/mask.nii.gz
+maskinv 0
+glmdir (null)
+IllCondOK 0
+ReScaleX 1
+DoFFx 0
+SigUseDouble 1
+Loading y from /home/lauri/Documents/TMS-FDG/tbsfdg/group/fsaverage_lh_active_minus-sham_sm8/eres.nii.gz
+   ... done reading.
+Computing normalized matrix
+Normalized matrix condition is 1
+Matrix condition is 1
+Found 149955 voxels in mask
+Reshaping mriglm->mask...
+search space = 74612.577841
+Design detected as one-sample group mean, adjusting permutation simulation
+DOF = 15
+thresh = 1.3, threshadj = 0.99897 
+
+
+Starting simulation sim over 1000 trials
+mri_glmfit simulation done 3.11825
+
+
+Tue 11 Feb 2025 01:54:44 PM EST
+mri_surfcluster --in /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/sig.nii.gz --mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/mask.nii.gz --cwsig /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.nii.gz --sum /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.summary --ocn /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.ocn.nii.gz --annot aparc --cwpvalthresh 0.05 --o /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.masked.nii.gz --no-fixmni --csd-out /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/csd/all.perm.th13.abs-osgm.csd --csd /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/csd/perm.th13.abs.j001-osgm.csd --csdpdf /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.pdf.dat --vwsig /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.voxel.nii.gz --vwsigmax /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.voxel.max.dat --oannot /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.ocn.annot --bonferroni 3 --surf white
+Merging CSD files
+Creating CDFs from CSD files
+csd->threshsign = 0
+thsign = abs, id = 0
+version 7.4.1
+hemi           = lh
+srcid          = /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/sig.nii.gz 
+srcsubjid      = fsaverage
+srcsurf        = white
+srcframe       = 0
+thsign         = abs
+thmin          = 1.3
+thmax          = -1
+fdr            = -1
+minarea        = 0
+Bonferroni      = 3
+xfmfile        = talairach.xfm
+nth         = -1
+outid    = /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.masked.nii.gz nii
+ocnid    = /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.ocn.nii.gz nii
+sumfile  = /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.summary
+subjectsdir    = /usr/local/freesurfer/subjects
+FixMNI = 0
+Found 149955 vertices in mask
+Found 149955 vertices in mask
+Found 149955 points in clabel.
+------------- XFM matrix (RAS2RAS) ---------------
+/usr/local/freesurfer/subjects/fsaverage/mri/transforms/talairach.xfm
+ 1.00000   0.00000   0.00000   0.00000;
+ 0.00000   1.00000   0.00000   0.00000;
+ 0.00000   0.00000   1.00000   0.00000;
+ 0.00000   0.00000   0.00000   1.00000;
+----------------------------------------------------
+Reading source surface /usr/local/freesurfer/subjects/fsaverage/surf/lh.white
+Done reading source surface
+Reading annotation /usr/local/freesurfer/subjects/fsaverage/label/lh.aparc.annot
+Computing metric properties
+Loading source values
+number of voxels in search space = 149955
+Done loading source values (nvtxs = 163842)
+overall max = 3.02651 at vertex 80562
+overall min = -3.21991 at vertex 50067
+surface nvertices 163842
+metric props tot surface area 65417.000000
+group_avg_vtxarea_loaded 1
+masked surface area 76467.507812
+Computing voxel-wise significance
+CSDpvalMaxSigMap(): found 16662/163842 above 0, max=-0.00510992
+NOT Adjusting threshold for 1-tailed test
+thminadj = 1.3
+Searching for Clusters ...
+thmin=1.300000 (1.300000), thmax=-1.000000 (-1), thsignid=0, minarea=0.000000
+Found 45 clusters
+Max cluster size 316.790253
+Pruning by CW P-Value 0.05
+Saving thresholded output to  /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.masked.nii.gz
+Saving cluster numbers to /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.ocn.nii.gz
+Saving cluster pval /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.nii.gz
+Constructing output annotation
+Writing annotation /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.ocn.annot
+mri_segstats --seg /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.ocn.nii.gz --exclude 0 --i /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_lh_active_minus_sham_fsaverage_sm8.nii.gz --sum /tmp/tmp.0GZJLH --avgwf /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.y.ocn.dat
+
+7.4.1
+cwd 
+cmdline mri_segstats --seg /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.ocn.nii.gz --exclude 0 --i /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_lh_active_minus_sham_fsaverage_sm8.nii.gz --sum /tmp/tmp.0GZJLH --avgwf /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.y.ocn.dat 
+sysname  Linux
+hostname XPS
+machine  x86_64
+user     lauri
+whitesurfname  white
+UseRobust  0
+Loading /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.ocn.nii.gz
+Loading /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_lh_active_minus_sham_fsaverage_sm8.nii.gz
+Voxel Volume is 1 mm^3
+Generating list of segmentation ids
+Found   1 segmentations
+Computing statistics for each segmentation
+
+Reporting on   0 segmentations
+Using PrintSegStat
+Computing spatial average of each frame
+
+Writing to /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.y.ocn.dat
+mri_segstats done
+mri_convert /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.nii.gz /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.nii.gz --frame 0
+mri_convert /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.nii.gz /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.nii.gz --frame 0 
+reading from /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.nii.gz...
+TR=0.00, TE=0.00, TI=0.00, flip angle=0.00
+i_ras = (-1, 0, 0)
+j_ras = (0, 0, -1)
+k_ras = (0, 1, 0)
+keeping frame 0
+writing to /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm8/osgm/perm.th13.abs.sig.cluster.nii.gz...
+Tue 11 Feb 2025 01:51:36 PM EST
+Tue 11 Feb 2025 01:54:46 PM EST
+mri_glmfit-sim done

@@ -1,0 +1,24 @@
+
+7.4.1
+cwd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+cmdline mri_glmfit --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_rh_active_minus_sham_fsaverage_sm10.nii.gz --surface fsaverage rh --save-eres --osgm --nii.gz --glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_rh_active_minus-sham_sm10 
+sysname  Linux
+hostname XPS
+machine  x86_64
+user     lauri
+FixVertexAreaFlag = 1
+UseMaskWithSmoothing     1
+OneSampleGroupMean 1
+y    /home/lauri/Documents/TMS-FDG/tbsfdg/group/all_rh_active_minus_sham_fsaverage_sm10.nii.gz
+logyflag 0
+usedti  0
+labelmask  /usr/local/freesurfer/subjects/fsaverage/label/rh.cortex.label
+maskinv 0
+glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_rh_active_minus-sham_sm10
+IllCondOK 0
+ReScaleX 1
+DoFFx 0
+SigUseDouble 1
+ResidualFWHM 15.159760
+SearchSpace 74490.846304
+anattype surface

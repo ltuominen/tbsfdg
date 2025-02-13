@@ -1,0 +1,24 @@
+
+7.4.1
+cwd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+cmdline mri_glmfit --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_active_minus_sham_mni152_sm8.nii.gz --save-eres --osgm --mask /home/lauri/Documents/TMS-FDG/tbsfdg/graymask.nii.gz --nii.gz --glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8/ 
+sysname  Linux
+hostname XPS
+machine  x86_64
+user     lauri
+FixVertexAreaFlag = 1
+UseMaskWithSmoothing     1
+OneSampleGroupMean 1
+y    /home/lauri/Documents/TMS-FDG/tbsfdg/group/all_active_minus_sham_mni152_sm8.nii.gz
+logyflag 0
+usedti  0
+mask /home/lauri/Documents/TMS-FDG/tbsfdg/graymask.nii.gz
+maskinv 0
+glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm8/
+IllCondOK 0
+ReScaleX 1
+DoFFx 0
+SigUseDouble 1
+ResidualFWHM 13.544212
+SearchSpace 1368752.000000
+anattype volume

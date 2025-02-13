@@ -1,0 +1,41 @@
+# Cluster Growing Summary (mri_surfcluster)
+# 7.4.1
+# 7.4.1
+# CreationTime 2025/02/11-18:57:55-GMT
+# cmdline mri_surfcluster --in /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/sig.nii.gz --mask /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/mask.nii.gz --cwsig /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/perm.th13.abs.sig.cluster.nii.gz --sum /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/perm.th13.abs.sig.cluster.summary --ocn /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/perm.th13.abs.sig.ocn.nii.gz --annot aparc --cwpvalthresh 0.05 --o /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/perm.th13.abs.sig.masked.nii.gz --no-fixmni --csd-out /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/csd/all.perm.th13.abs-osgm.csd --csd /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/csd/perm.th13.abs.j001-osgm.csd --csdpdf /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/perm.th13.abs.pdf.dat --vwsig /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/perm.th13.abs.sig.voxel.nii.gz --vwsigmax /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/perm.th13.abs.sig.voxel.max.dat --oannot /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/perm.th13.abs.sig.ocn.annot --bonferroni 3 --surf white 
+# cwd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+# sysname  Linux
+# hostname XPS
+# machine  x86_64
+# FixVertexAreaFlag 1
+# FixSurfClusterArea 1
+# 
+# Input      /home/lauri/Documents/TMS-FDG/tbsfdg/group//fsaverage_lh_active_minus-sham_sm10/osgm/sig.nii.gz
+# Frame Number      0
+# srcsubj fsaverage
+# hemi lh
+# surface white
+# group_avg_surface_area 82220
+# group_avg_vtxarea_loaded 1
+# annot aparc
+# SUBJECTS_DIR /usr/local/freesurfer/subjects
+# SearchSpace_mm2 76467.5
+# SearchSpace_vtx 149955
+# Bonferroni 3
+# Minimum Threshold 1.3
+# Maximum Threshold infinity
+# Threshold Sign    abs
+# AdjustThreshWhenOneTail 1
+# CW PValue Threshold: 0.05 
+# Area Threshold    0 mm^2
+# CSD thresh  1.300000
+# CSD nreps    1000
+# CSD simtype  perm
+# CSD contrast osgm
+# CSD confint  90.000000
+# Overall max 2.86293 at vertex 149912
+# Overall min -3.02886 at vertex 87575
+# NClusters          0
+# FixMNI = 0
+# 
+# ClusterNo  Max   VtxMax   Size(mm^2)  MNIX   MNIY   MNIZ    CWP    CWPLow    CWPHi   NVtxs    WghtVtx   Annot
