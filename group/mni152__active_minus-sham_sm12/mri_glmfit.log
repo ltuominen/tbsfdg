@@ -1,6 +1,6 @@
 
 7.4.1
-cwd /home/lauri/Documents/TMS-FDG/tbsfdg/scripts_analysis
+cwd /home/lauri/Documents/TMS-FDG/tbsfdg/code
 cmdline mri_glmfit --y /home/lauri/Documents/TMS-FDG/tbsfdg/group//all_active_minus_sham_mni152_sm12.nii.gz --save-eres --osgm --mask /home/lauri/Documents/TMS-FDG/tbsfdg/graymask.nii.gz --nii.gz --glmdir /home/lauri/Documents/TMS-FDG/tbsfdg/group//mni152__active_minus-sham_sm12/ 
 sysname  Linux
 hostname XPS
@@ -19,6 +19,6 @@ IllCondOK 0
 ReScaleX 1
 DoFFx 0
 SigUseDouble 1
-ResidualFWHM 18.411173
+ResidualFWHM 20.000178
 SearchSpace 1368752.000000
 anattype volume
